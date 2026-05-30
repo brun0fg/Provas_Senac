@@ -1,31 +1,53 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
 
     public static void main(String[] args) {
-    Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
-        ContaBancaria conta1 = new ContaBancaria(null, 0, 0);
+ ArrayList<ContaBancaria> clientes = new ArrayList<>();
 
-       System.out.println("Nome Titular: ");
-        conta1.setTitular(scanner.nextLine());
+for(int i = 0; i < 3; i++){
+
+        ContaBancaria conta = new ContaBancaria();
+
+         System.out.println("\nCliente " + (i + 1));
+
+        System.out.println("Nome Titular: ");
+        conta.setTitular(scanner.nextLine());
+
+        System.out.println("Digite seu saldo: ");
+        conta.setSaldo(scanner.nextDouble());
+
+        System.out.println("Limite de saque diario: ");
+        conta.setLimiteSaque(scanner.nextDouble());
 
         System.out.println("Valor a depositar: ");
-        conta1.setSaldo(scanner.nextDouble());
+        conta.depositar(scanner.nextDouble());
 
-
-        conta1.exibirDados();
-
-        System.out.println("----------------");
-
-        conta1.sacar(200);
+        System.out.println("Valor sacar: ");
+        conta.sacar(scanner.nextDouble());
+        scanner.nextLine();
 
         System.out.println("----------------");
 
+        System.out.println("----------------");
 
-        conta1.exibirDados();
+         clientes.add(conta);
 
-    scanner.close();
+     
+
+
+        }
+
+        for (ContaBancaria conta : clientes) {
+            conta.exibirDados();
+            System.out.println("------------------------");
+              
+
+    }
+      scanner.close();
 }
-    
+
 }
